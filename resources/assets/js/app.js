@@ -11,9 +11,13 @@ import Vue from 'vue';
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en';
 import router from  './routes/Router';
-import App from './components/AppComponent'
+import currentLocale from  './locale';
+import Trans from './lang';
+import App from './components/AppComponent';
 
+Vue.prototype.$locale = currentLocale;
 Vue.use(ElementUI, { locale });
+Vue.mixin(Trans);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -25,4 +29,5 @@ const app = new Vue({
     el: '#app',
     components: { App },
     router
+
 });

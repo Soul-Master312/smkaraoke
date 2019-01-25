@@ -1,5 +1,5 @@
 <template>
-    <h1>123</h1>
+    <h1>{{ trans('auth.failed') }}</h1>
 </template>
 
 <script>

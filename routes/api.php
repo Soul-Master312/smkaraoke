@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +11,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::get('/get-lang', function () {
+
+    $lang_files = \Illuminate\Support\Facades\File::allFiles(resource_path() . '/lang/' . App()->getLocale());
+    $trans = [];
+    foreach ($lang_files as $f) {
+        $filename = pathinfo($f)['filename'];
+        $trans[$filename] = trans($filename);
+    }
+    return json_encode($trans);
 });

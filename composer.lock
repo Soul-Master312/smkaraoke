@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6ea5ff0394e0a6be6512df2e01b127e",
+    "content-hash": "582e36f955421dbe2da9ccd112a2e004",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -585,16 +585,16 @@
         },
         {
             "name": "ktamas77/firebase-php",
-            "version": "dev-master",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ktamas77/firebase-php.git",
-                "reference": "428e1843935dad69bd7c7d63eef598607100afc3"
+                "reference": "75b4b47243fde8c35dbb007e40bd97725433c728"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ktamas77/firebase-php/zipball/428e1843935dad69bd7c7d63eef598607100afc3",
-                "reference": "428e1843935dad69bd7c7d63eef598607100afc3",
+                "url": "https://api.github.com/repos/ktamas77/firebase-php/zipball/75b4b47243fde8c35dbb007e40bd97725433c728",
+                "reference": "75b4b47243fde8c35dbb007e40bd97725433c728",
                 "shasum": ""
             },
             "require": {
@@ -627,7 +627,7 @@
                 "rest",
                 "wrapper"
             ],
-            "time": "2018-12-22T08:55:00+00:00"
+            "time": "2018-12-22T01:20:05+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4655,9 +4655,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ktamas77/firebase-php": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
