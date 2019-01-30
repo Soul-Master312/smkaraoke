@@ -1,20 +1,30 @@
 <template>
     <div>
-        <h1>Vue Router Demo App</h1>
-
-        <p>
-            <router-link :to="{ name: 'frontend.index' }">Home</router-link> |
-        </p>
-
-        <div class="container">
-            <router-view></router-view>
+        <div id="preloader">
+            <div id="loader"></div>
         </div>
+
+        <HeaderComponent></HeaderComponent>
+
+        <HomeIntroComponent></HomeIntroComponent>
+
+        <router-view></router-view>
+
+        <FooterComponent></FooterComponent>
     </div>
 </template>
 
 <script>
+    import HeaderComponent from './layout/HeaderComponent';
+    import FooterComponent from './layout/FooterComponent';
+    import HomeIntroComponent from './layout/HomeIntroComponent';
+
     export default {
-        name: "AppComponent"
+        name: "AppComponent",
+        components: {HomeIntroComponent, FooterComponent, HeaderComponent},
+        mounted() {
+            console.log(this.$router.currentRoute);
+        }
     }
 </script>
 

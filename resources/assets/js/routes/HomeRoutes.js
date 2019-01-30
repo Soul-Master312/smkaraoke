@@ -2,7 +2,7 @@ import HomeComponent from '../components/home/HomeComponent'
 
 export default [
     {
-        path: '/admin',
+        path: '/',
         name: 'frontend.index',
         component: HomeComponent,
     }

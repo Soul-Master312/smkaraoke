@@ -11,6 +11,7 @@ const routes = baseRoutes.concat(HomeRoute);
 // end
 
 const router = new VueRouter({
+    mode: 'history',
     routes
 });
 

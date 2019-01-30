@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html class="no-js" lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,9 +7,15 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Karaoke - Soulmaster</title>
         <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
-        {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">--}}
-        {{--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>--}}
-        {{--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--}}
+        <link rel="stylesheet" href="{{ asset('public/css/all.css') }}">
+        <script src="{{ asset('public/js/top.js') }}"></script>
+        <style type="text/css" media="screen">
+            .s-styles {
+                background-color: #ffffff;
+                padding-top: 18rem;
+                padding-bottom: 14.8rem;
+            }
+        </style>
         <script>
             window.trans = @php
                 $lang_files = \Illuminate\Support\Facades\File::allFiles(resource_path() . '/lang/' . App()->getLocale());
@@ -22,11 +28,13 @@
             @endphp;
         </script>
     </head>
-    <body>
-        <div class="container" id="app">
+    <body id="top">
+        <div id="app">
             <app></app>
         </div>
         <script src="{{ asset('public/js/app.js') }}"></script>
+        <script src="{{ asset('public/js/vendor/plugins.js') }}"></script>
+        <script src="{{ asset('public/js/vendor/main.js') }}"></script>
         @yield('js')
     </body>
 </html>
