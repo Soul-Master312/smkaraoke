@@ -6,7 +6,7 @@
 
         <HeaderComponent></HeaderComponent>
 
-        <HomeIntroComponent></HomeIntroComponent>
+        <HomeIntroComponent v-if="currentRouteName === 'frontend.index'"></HomeIntroComponent>
 
         <router-view></router-view>
 
@@ -22,8 +22,13 @@
     export default {
         name: "AppComponent",
         components: {HomeIntroComponent, FooterComponent, HeaderComponent},
+        data() {
+            return {
+                currentRouteName : '',
+            };
+        },
         mounted() {
-            console.log(this.$router.currentRoute);
+            this.currentRouteName = this.$router.currentRoute.name;
         }
     }
 </script>

@@ -4,10 +4,12 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 // Routes
-import HomeRoute from './HomeRoutes'
+import HomeRoutes from './HomeRoutes';
+import RoomRoutes from './RoomRoutes';
 
 const baseRoutes  = [];
-const routes = baseRoutes.concat(HomeRoute);
+
+const routes = baseRoutes.concat(HomeRoutes, RoomRoutes);
 // end
 
 const router = new VueRouter({
