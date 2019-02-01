@@ -4,24 +4,23 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
-            </a>
+            <router-link :to="{ name: 'frontend.index'}">{{ trans('home.logo') }}</router-link>
         </div>
 
         <nav class="row header-nav-wrap wide">
             <ul class="header-main-nav">
-                <li class="current"><a class="smoothscroll" href="#home" title="intro">Intro</a></li>
-                <li><a href="index.html#about" title="about">About</a></li>
-                <li><a href="index.html#features" title="features">Features</a></li>
-                <li><a href="index.html#pricing" title="pricing">Pricing</a></li>
-                <li><a href="blog.html" title="blog">Blog</a></li>
+                <li>
+                    <router-link :to="{ name: 'frontend.room.list'}">{{ trans('home.menu.list room') }}</router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'frontend.room.create'}">{{ trans('home.menu.create room') }}</router-link>
+                </li>
             </ul>
 
             <ul class="header-social">
-                <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
             </ul>
         </nav>
 

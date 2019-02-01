@@ -6,8 +6,6 @@
 
         <HeaderComponent></HeaderComponent>
 
-        <HomeIntroComponent v-if="currentRouteName === 'frontend.index'"></HomeIntroComponent>
-
         <router-view></router-view>
 
         <FooterComponent></FooterComponent>
@@ -17,11 +15,10 @@
 <script>
     import HeaderComponent from './layout/HeaderComponent';
     import FooterComponent from './layout/FooterComponent';
-    import HomeIntroComponent from './layout/HomeIntroComponent';
 
     export default {
         name: "AppComponent",
-        components: {HomeIntroComponent, FooterComponent, HeaderComponent},
+        components: {FooterComponent, HeaderComponent},
         data() {
             return {
                 currentRouteName : '',

@@ -22,9 +22,8 @@
                     <a class="btn-video" href="https://player.vimeo.com/video/14592941?color=00a650&title=0&byline=0&portrait=0" data-lity>
                         <span class="video-icon"></span>
                     </a>
-                    <a href="#0" class="btn btn--primary btn--large">
-                        Get The App
-                    </a>
+                    <router-link :to="{ name: 'frontend.room.create'}" class="btn btn--primary btn--large">{{ trans('home.menu.create room now') }}</router-link>
+
                 </div>
 
             </div> <!-- end home-content__main -->

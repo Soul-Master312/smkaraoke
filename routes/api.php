@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Routing\Router;
+
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
@@ -24,4 +26,10 @@ Route::get('/get-lang', function () {
         $trans[$filename] = trans($filename);
     }
     return json_encode($trans);
+});
+
+/** @var Router $router */
+
+$router->group(['prefix' => '/room', 'namespace' => 'Api'], function (Router $router) {
+    $router::post('create','RoomApiController@create');
 });

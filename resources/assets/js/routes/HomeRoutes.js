@@ -5,5 +5,5 @@ export default [
         path: '/',
         name: 'frontend.index',
         component: HomeComponent,
-    }
+    },
 ]

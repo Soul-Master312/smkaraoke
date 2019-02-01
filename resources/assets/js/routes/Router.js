@@ -9,7 +9,9 @@ import RoomRoutes from './RoomRoutes';
 
 const baseRoutes  = [];
 
-const routes = baseRoutes.concat(HomeRoutes, RoomRoutes);
+const routes = baseRoutes.concat(
+    HomeRoutes,
+    RoomRoutes);
 // end
 
 const router = new VueRouter({

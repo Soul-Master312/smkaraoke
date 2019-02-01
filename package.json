@@ -20,6 +20,7 @@
   "dependencies": {
     "element-ui": "^2.4.11",
     "font-awesome": "^4.7.0",
+    "form-backend-validation": "^2.3.6",
     "vue-i18n": "^8.7.0",
     "vue-router": "^3.0.2",
     "vue": "^2.5.21"
