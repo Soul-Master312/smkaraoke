@@ -37,7 +37,9 @@ class CreateRoomRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => __('createroom.validation.name required')
+            'name.required' => 'Xin vui lòng nhập tên phòng',
+            'password.required' => 'Xin vui lòng nhập mật khẩu',
+            'password.confirmed' => 'Mật khẩu và xác nhận mật khẩu không trùng khớp'
         ];
     }
 }

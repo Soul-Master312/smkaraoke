@@ -16,7 +16,8 @@ return [
         'accept' => 'Chấp Nhận'
     ],
     'title' => [
-        'form title' => 'Hãy tạo phòng để cùng tận hưởng những giây phút vui vẻ bên gia đình và người thân'
+        'title' => 'để cùng tận hưởng những giây phút vui vẻ bên gia đình và người thân',
+        'sub title' => 'Hãy tạo phòng'
     ],
     'validation' => [
         'name require' => 'Xin vui lòng nhập tên phòng'

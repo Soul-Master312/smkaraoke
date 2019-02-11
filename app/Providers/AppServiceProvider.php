@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Repositories\Contracts\FirebaseApiRepositoryInterface;
+use App\Http\Repositories\Eloquent\FirebaseApiRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->singleton(
+            FirebaseApiRepositoryInterface::class,
+            FirebaseApiRepository::class
+        );
     }
 
     /**

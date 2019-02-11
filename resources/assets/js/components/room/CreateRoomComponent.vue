@@ -8,8 +8,6 @@
                     <!-- START respond -->
                     <div id="respond" class="col-full">
 
-                        <h3 style="text-align: center">{{ trans('createroom.title.form title') }}</h3>
-
                         <el-form ref="form" :model="room" label-width="120px" label-position="top"
                                  v-loading.body="loading"
                                  @keydown="form.errors.clear($event.target.name);">

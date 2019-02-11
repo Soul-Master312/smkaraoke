@@ -53,6 +53,10 @@ return [
             'driver' => 'null',
         ],
 
+        'firebase' => [
+            'driver' => 'firebase',
+            'database_url' => env('FIREBASE_APP_DATABASE_URL'),
+            'json_file_name' => env('JSON_FILE_NAME')
+        ]
     ],
-
 ];
