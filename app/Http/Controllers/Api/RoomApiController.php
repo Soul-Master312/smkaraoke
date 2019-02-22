@@ -8,12 +8,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\BaseApiController;
 use App\Http\Repositories\Eloquent\FirebaseApiRepository;
 use App\Http\Requests\CreateRoomRequest;
-use Illuminate\Support\Facades\App;
 
-class RoomApiController extends BaseController
+class RoomApiController extends BaseApiController
 {
 
     protected $firebaseApiRepository;
@@ -30,8 +29,7 @@ class RoomApiController extends BaseController
 
     public function create()
     {
-        dd($this->firebaseApiRepository->showData);
-        dd(App::getLocale());
+        return $this->response($this->firebaseApiRepository->showData(), 'abc');
     }
 
 }

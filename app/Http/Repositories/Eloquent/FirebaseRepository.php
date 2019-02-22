@@ -9,7 +9,6 @@
 namespace App\Http\Repositories\Eloquent;
 
 use App\Http\Repositories\Contracts\FirebaseRepositoryInterface;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
@@ -60,28 +59,21 @@ abstract class FirebaseRepository implements FirebaseRepositoryInterface
 
     private function setServiceAccount()
     {
-
-        $jsonString = file_get_contents($this->getJsonFile());
-        $data = json_decode($jsonString, true);
-//        dd($data);
-//
-//        $config = json_decode($this->getJsonFile(), true);
-//        dd($config);
-        $this->serviceAccount = ServiceAccount::fromJsonFile($this->getJsonFile());
+        $config = json_decode($this->getJsonFile(), true);
+        $this->serviceAccount = ServiceAccount::fromArray($config);
     }
 
     private function getJsonFile()
     {
-        //return File::files(storage_path() . '\\' . config('broadcasting.connections.firebase.json_file_name'));
-        $storagePath  = Storage::disk('local')->path(config('broadcasting.connections.firebase.json_file_name'));
-        return $storagePath;
+        return Storage::disk('local')->get(config('broadcasting.connections.firebase.json_file_name'));
     }
 
     private function makeFirebase()
     {
         $this->firebase = (new Factory())
             ->withServiceAccount($this->serviceAccount)
-            ->withDatabaseUri($this->databaseUrl);
+            ->withDatabaseUri($this->databaseUrl)
+            ->create();
         $this->setDatabase();
     }
 

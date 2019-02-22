@@ -15,11 +15,13 @@ class FirebaseApiRepository extends FirebaseRepository implements FirebaseApiRep
 {
     public function databaseUrl()
     {
-        return config('broadcasting.firebase.database_url');
+        return config('broadcasting.connections.firebase.database_url');
     }
 
     public function showData()
     {
-        return $this->database;
+        $reference = $this->database->getReference('');
+        $value = $reference->getValue();
+        return $value;
     }
 }

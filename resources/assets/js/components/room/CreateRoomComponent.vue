@@ -67,6 +67,7 @@
                 this.loading = true;
                 this.form.post('/api/room/create')
                     .then((response) => {
+                        console.log(response);
                         this.loading = false;
                         this.$message({
                             type: 'success',

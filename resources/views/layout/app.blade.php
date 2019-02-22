@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="{{ asset("public/images/karaoke.jpg") }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset("images/karaoke.jpg") }}" type="image/x-icon">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Karaoke - Soulmaster</title>
-        <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('public/css/all.css') }}">
-        <script src="{{ asset('public/js/top.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/all.css') }}">
+        <script src="{{ asset('js/top.js') }}"></script>
         <style type="text/css" media="screen">
             .s-styles {
                 background-color: #ffffff;
@@ -32,9 +32,9 @@
         <div id="app">
             <app></app>
         </div>
-        <script src="{{ asset('public/js/app.js') }}"></script>
-        <script src="{{ asset('public/js/vendor/plugins.js') }}"></script>
-        <script src="{{ asset('public/js/vendor/main.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/vendor/plugins.js') }}"></script>
+        <script src="{{ asset('js/vendor/main.js') }}"></script>
         @yield('js')
     </body>
 </html>
