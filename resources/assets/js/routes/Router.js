@@ -11,7 +11,8 @@ const baseRoutes  = [];
 
 const routes = baseRoutes.concat(
     HomeRoutes,
-    RoomRoutes);
+    RoomRoutes
+);
 // end
 
 const router = new VueRouter({

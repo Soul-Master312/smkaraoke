@@ -12,10 +12,12 @@ import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en';
 import router from  './routes/Router';
 import currentLocale from  './locale';
+import auth from  './auth';
 import Trans from './lang';
 import App from './components/AppComponent';
 
 Vue.prototype.$locale = currentLocale;
+Vue.prototype.$auth = auth;
 Vue.use(ElementUI, { locale });
 Vue.mixin(Trans);
 

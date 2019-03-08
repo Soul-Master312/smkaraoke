@@ -9,27 +9,27 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\BaseApiController;
-use App\Http\Repositories\Eloquent\FirebaseApiRepository;
+use App\Http\Repositories\Contracts\RoomApiRepositoryInterface;
 use App\Http\Requests\CreateRoomRequest;
 
 class RoomApiController extends BaseApiController
 {
-
-    protected $firebaseApiRepository;
+    protected $roomApiRepository;
 
     /**
      * RoomApiController constructor.
-     * @param $firebaseApiRepository
+     * @param RoomApiRepositoryInterface $roomApiRepository
      */
-    public function __construct(FirebaseApiRepository $firebaseApiRepository)
+    public function __construct(RoomApiRepositoryInterface $roomApiRepository)
     {
-        $this->firebaseApiRepository = $firebaseApiRepository;
+        $this->roomApiRepository = $roomApiRepository;
     }
 
 
-    public function create()
+    public function create(CreateRoomRequest $request)
     {
-        return $this->response($this->firebaseApiRepository->showData(), 'abc');
+        $response = $this->roomApiRepository->createAndLogin($request);
+        return $this->response($response->data, 'Tạo Phòng Thành Công');
     }
 
 }

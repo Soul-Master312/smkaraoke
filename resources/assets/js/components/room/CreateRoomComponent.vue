@@ -7,15 +7,20 @@
 
                     <!-- START respond -->
                     <div id="respond" class="col-full">
-
-                        <el-form ref="form" :model="room" label-width="120px" label-position="top"
+                        <el-form ref="form" class="blog-content-wrap" :model="room" label-width="120px" label-position="top"
                                  v-loading.body="loading"
                                  @keydown="form.errors.clear($event.target.name);">
                             <el-form-item :label="trans('createroom.form.room name')"
-                                          :class="{'el-form-item is-error': form.errors.has('name') }">
-                                <input v-model="room.name" class="full-width" placeholder="" type="text">
-                                <div class="el-form-item__error" v-if="form.errors.has('name')"
-                                     v-text="form.errors.first('name')"></div>
+                                          :class="{'el-form-item is-error': form.errors.has('room_name') }">
+                                <input v-model="room.room_name" class="full-width" placeholder="" type="text">
+                                <div class="el-form-item__error" v-if="form.errors.has('room_name')"
+                                     v-text="form.errors.first('room_name')"></div>
+                            </el-form-item>
+                            <el-form-item :label="trans('createroom.form.room login name')"
+                                          :class="{'el-form-item is-error': form.errors.has('user_name') }">
+                                <input v-model="room.user_name" class="full-width" placeholder="" type="text">
+                                <div class="el-form-item__error" v-if="form.errors.has('user_name')"
+                                     v-text="form.errors.first('user_name')"></div>
                             </el-form-item>
                             <el-form-item :label="trans('createroom.form.password')"
                                           :class="{'el-form-item is-error': form.errors.has('password') }">
@@ -52,7 +57,8 @@
             return {
                 loading: false,
                 room: {
-                    name: '',
+                    room_name: '',
+                    user_name: '',
                     password: '',
                     password_confirmation: ''
                 },
@@ -62,12 +68,10 @@
         methods: {
             onSubmit() {
                 this.form = new Form(_.merge(this.room));
-                if (!this.form.couple_photo || (typeof this.form.couple_photo == 'string'))
-                    delete this.form.couple_photo;
                 this.loading = true;
                 this.form.post('/api/room/create')
                     .then((response) => {
-                        console.log(response);
+                        this.$auth.login(response.data);
                         this.loading = false;
                         this.$message({
                             type: 'success',
@@ -77,8 +81,8 @@
                     .catch((error) => {
                         this.loading = false;
                         this.$notify.error({
-                            title: 'Error',
-                            message: 'There are some errors in the form.',
+                            title: this.trans('message.error.title'),
+                            message: this.trans('message.error.form error'),
                         });
                     });
             }

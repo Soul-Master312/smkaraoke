@@ -24,7 +24,8 @@ class CreateRoomRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'room_name' => 'required|unique:rooms,room_name',
+            'user_name' => 'required|unique:rooms,user_name',
             'password' => 'required|confirmed',
         ];
     }
@@ -37,7 +38,8 @@ class CreateRoomRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Xin vui lòng nhập tên phòng',
+            'room_name.required' => 'Xin vui lòng nhập tên phòng',
+            'user_name.required' => 'Xin vui lòng nhập tên đăng nhập cho phòng',
             'password.required' => 'Xin vui lòng nhập mật khẩu',
             'password.confirmed' => 'Mật khẩu và xác nhận mật khẩu không trùng khớp'
         ];

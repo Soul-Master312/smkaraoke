@@ -17,19 +17,12 @@ use Illuminate\Routing\Router;
 //    return $request->user();
 //});
 
-Route::get('/get-lang', function () {
-
-    $lang_files = \Illuminate\Support\Facades\File::allFiles(resource_path() . '/lang/' . App()->getLocale());
-    $trans = [];
-    foreach ($lang_files as $f) {
-        $filename = pathinfo($f)['filename'];
-        $trans[$filename] = trans($filename);
-    }
-    return json_encode($trans);
-});
-
 /** @var Router $router */
 
 $router->group(['prefix' => '/room', 'namespace' => 'Api'], function (Router $router) {
-    $router::post('create','RoomApiController@create');
+    $router->post('create','RoomApiController@create');
+    $router->post('join','RoomApiController@create');
+    $router->group(['middleware' => 'auth:room'], function() {
+
+    });
 });

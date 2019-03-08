@@ -11,27 +11,19 @@ namespace App\Http\Repositories\Eloquent;
 use App\Http\Repositories\Contracts\BaseRepositoryInterface;
 use App\Http\Repositories\Exceptions\RepositoryException;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Container\Container as App;
 
 abstract class BaseRepository implements BaseRepositoryInterface
 {
-    /**
-     * @var App
-     */
-    private $app;
-
     /**
      * @var Model
      */
     protected $model;
 
     /**
-     * @param App $app
      * @throws RepositoryException
      */
-    public function __construct(App $app) {
-        $this->app = $app;
-        $this->makeModel();
+    public function __construct() {
+        $this->model = $this->makeModel();
     }
 
     /**
@@ -39,13 +31,14 @@ abstract class BaseRepository implements BaseRepositoryInterface
      *
      * @return mixed
      */
-    abstract function model();
+    abstract public function model();
 
     /**
      * @param array $columns
      * @return mixed
      */
-    public function all($columns = array('*')) {
+    public function all($columns = array('*'))
+    {
         return $this->model->get($columns);
     }
 
@@ -54,7 +47,8 @@ abstract class BaseRepository implements BaseRepositoryInterface
      * @param array $columns
      * @return mixed
      */
-    public function paginate($perPage = 15, $columns = array('*')) {
+    public function paginate($perPage = 15, $columns = array('*'))
+    {
         return $this->model->paginate($perPage, $columns);
     }
 
@@ -62,7 +56,8 @@ abstract class BaseRepository implements BaseRepositoryInterface
      * @param array $data
      * @return mixed
      */
-    public function create(array $data) {
+    public function create(array $data)
+    {
         return $this->model->create($data);
     }
 
@@ -72,7 +67,8 @@ abstract class BaseRepository implements BaseRepositoryInterface
      * @param string $attribute
      * @return mixed
      */
-    public function update(array $data, $id, $attribute="id") {
+    public function update(array $data, $id, $attribute="id")
+    {
         return $this->model->where($attribute, '=', $id)->update($data);
     }
 
@@ -80,7 +76,8 @@ abstract class BaseRepository implements BaseRepositoryInterface
      * @param $id
      * @return mixed
      */
-    public function delete($id) {
+    public function delete($id)
+    {
         return $this->model->destroy($id);
     }
 
@@ -89,7 +86,8 @@ abstract class BaseRepository implements BaseRepositoryInterface
      * @param array $columns
      * @return mixed
      */
-    public function find($id, $columns = array('*')) {
+    public function find($id, $columns = array('*'))
+    {
         return $this->model->find($id, $columns);
     }
 
@@ -99,20 +97,25 @@ abstract class BaseRepository implements BaseRepositoryInterface
      * @param array $columns
      * @return mixed
      */
-    public function findBy($attribute, $value, $columns = array('*')) {
+    public function findBy($attribute, $value, $columns = array('*'))
+    {
         return $this->model->where($attribute, '=', $value)->first($columns);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Builder
      * @throws RepositoryException
      */
-    public function makeModel() {
-        $model = $this->app->make($this->model());
+    public function makeModel()
+    {
+        if (!method_exists($this, 'model')) {
+            throw new RepositoryException();
+        }
+
+        $model = app($this->model());
 
         if (!$model instanceof Model)
             throw new RepositoryException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
 
-        return $this->model = $model->newQuery();
+        return $model;
     }
 }

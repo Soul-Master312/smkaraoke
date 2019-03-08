@@ -9,6 +9,7 @@
 return [
     'form' => [
         'room name' => 'Tên Phòng',
+        'room login name' => 'Tên Đăng Nhập',
         'password' => 'Mật Khẩu',
         'confirm password' => 'Xác Nhận Lại Mật Khẩu'
     ],

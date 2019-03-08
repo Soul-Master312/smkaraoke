@@ -21,4 +21,18 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'public/css/vendor/base.css',
         'public/css/vendor/main.css',
         'public/css/vendor/vendor.css'
-    ], 'public/css/all.css');
+    ], 'public/css/all.css')
+    .webpackConfig({
+        module: {
+            rules: [
+                {
+                    test: /\.tsx?$/,
+                    loader: "ts-loader",
+                    exclude: /node_modules/
+                }
+            ]
+        },
+        resolve: {
+            extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"]
+        }
+    });

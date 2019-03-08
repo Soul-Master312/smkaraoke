@@ -36,6 +36,11 @@ abstract class FirebaseRepository implements FirebaseRepositoryInterface
     protected $database;
 
     /**
+     * @var
+     */
+    protected $node = '';
+
+    /**
      * FirebaseRepository constructor.
      */
     public function __construct()
@@ -77,5 +82,46 @@ abstract class FirebaseRepository implements FirebaseRepositoryInterface
         $this->setDatabase();
     }
 
+    public function getKey() {
+        return $this->database->getReference($this->node)->push()->getKey();
+    }
+
+    public function node($node = '')
+    {
+        $this->node = $node;
+        return $this;
+    }
+
+    public function get()
+    {
+        return $this->database->getReference($this->node)->getValue();
+    }
+
+    public function create(Array $data = [])
+    {
+        if (count($data) > 0) {
+            if ($this->node) {
+                $this->database->getReference($this->node)->update($data);
+            }
+            Throw new \Exception('Please input node to change');
+        }
+        Throw new \Exception('Please input data to change');
+    }
+
+    public function replace($data)
+    {
+        $this->database->getReference($this->node)->set($data);
+    }
+
+    public function update($data)
+    {
+        if ($data) {
+            if ($this->node) {
+                $this->replace($data);
+            }
+            Throw new \Exception('Please input node to change');
+        }
+        Throw new \Exception('Please input data to change');
+    }
 
 }

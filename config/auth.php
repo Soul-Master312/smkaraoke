@@ -45,6 +45,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'room' => [
+            'driver' => 'passport',
+            'provider' => 'rooms',
+        ],
     ],
 
     /*
@@ -68,6 +73,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'rooms' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Room::class,
         ],
 
         // 'users' => [
