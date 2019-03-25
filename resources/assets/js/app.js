@@ -8,17 +8,22 @@
 require('./bootstrap');
 
 import Vue from 'vue';
-import ElementUI from 'element-ui';
-import locale from 'element-ui/lib/locale/lang/en';
+import BootstrapVue from 'bootstrap-vue';
+import store from './store/store';
 import router from  './routes/Router';
 import currentLocale from  './locale';
-import auth from  './auth';
+import firebase from  './firebase';
 import Trans from './lang';
 import App from './components/AppComponent';
+import BaseConfig from './config';
+import '../sass/custom.sass';
+import VueYoutube from 'vue-youtube';
 
+Vue.use(VueYoutube);
 Vue.prototype.$locale = currentLocale;
-Vue.prototype.$auth = auth;
-Vue.use(ElementUI, { locale });
+Vue.prototype.$firebase = firebase;
+Vue.prototype.$baseConfig = BaseConfig;
+Vue.use(BootstrapVue);
 Vue.mixin(Trans);
 
 /**
@@ -27,8 +32,9 @@ Vue.mixin(Trans);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+window.app = new Vue({
     el: '#app',
     components: { App },
+    store,
     router
 });

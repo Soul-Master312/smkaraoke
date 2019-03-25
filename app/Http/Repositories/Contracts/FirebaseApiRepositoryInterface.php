@@ -8,7 +8,7 @@
 
 namespace App\Http\Repositories\Contracts;
 
-interface FirebaseApiRepositoryInterface
+interface FirebaseApiRepositoryInterface extends FirebaseRepositoryInterface
 {
 
 }

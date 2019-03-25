@@ -1,6 +1,3 @@
-let locale = 'en';
 let currentLocale = document.documentElement.lang;
-if (currentLocale)
-    locale = currentLocale;
 
-export default locale
+export default currentLocale ? currentLocale : 'en'

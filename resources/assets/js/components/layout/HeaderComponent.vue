@@ -1,32 +1,16 @@
 <template>
     <!-- header
         ================================================== -->
-    <header class="s-header">
-
-        <div class="header-logo">
-            <router-link :to="{ name: 'frontend.index'}">{{ trans('home.logo') }}</router-link>
+    <b-container id="sm-header">
+        <div id="mySidenav" class="sm-sidenav">
+            <a href="javascript:void(0)" class="closebtn sm-close-nav" id="sm-close-nav">&times;</a>
+            <router-link class="sm-close-nav" :to="{ name: 'frontend.index'}">Home</router-link>
+            <router-link class="sm-close-nav" :to="{ name: 'frontend.find'}">Chọn bài</router-link>
+            <router-link class="sm-close-nav" :to="{ name: 'frontend.list'}">Danh sách đã chọn</router-link>
         </div>
-
-        <nav class="row header-nav-wrap wide">
-            <ul class="header-main-nav">
-                <li>
-                    <router-link :to="{ name: 'frontend.room.list'}">{{ trans('home.menu.list room') }}</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'frontend.room.create'}">{{ trans('home.menu.create room') }}</router-link>
-                </li>
-            </ul>
-
-            <ul class="header-social">
-                <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-            </ul>
-        </nav>
-
-        <a class="header-menu-toggle" href="#"><span>Menu</span></a>
-
-    </header> <!-- end header -->
+        <!-- Use any element to open the sidenav -->
+        <h3 id="sm-open-nav" class="mt-5 mb-5">☰</h3>
+    </b-container> <!-- end header -->
 </template>
 
 <script>

@@ -13,15 +13,12 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
     .js([
-        'public/js/vendor/modernizr.js',
-        'public/js/vendor/pace.min.js'
-    ], 'public/js/top.js')
+        'public/js/vendor/nav.js'
+    ], 'public/js/base.js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .styles([
-        'public/css/vendor/base.css',
-        'public/css/vendor/main.css',
-        'public/css/vendor/vendor.css'
-    ], 'public/css/all.css')
+        'public/css/vendor/nav.css'
+    ], 'public/css/base.css')
     .webpackConfig({
         module: {
             rules: [

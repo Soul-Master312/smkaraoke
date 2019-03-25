@@ -1,12 +1,10 @@
 <template>
     <div>
-        <div id="preloader">
-            <div id="loader"></div>
-        </div>
-
         <HeaderComponent></HeaderComponent>
 
-        <router-view></router-view>
+        <b-container class="sm-content">
+            <router-view></router-view>
+        </b-container>
 
         <FooterComponent></FooterComponent>
     </div>

@@ -7,15 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Karaoke - Soulmaster</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/all.css') }}">
-        <script src="{{ asset('js/top.js') }}"></script>
-        <style type="text/css" media="screen">
-            .s-styles {
-                background-color: #ffffff;
-                padding-top: 18rem;
-                padding-bottom: 14.8rem;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ asset('css/base.css') }}">
         <script>
             window.trans = @php
                 $lang_files = \Illuminate\Support\Facades\File::allFiles(resource_path() . '/lang/' . App()->getLocale());
@@ -28,13 +20,12 @@
             @endphp;
         </script>
     </head>
-    <body id="top">
-        <div id="app">
+    <body>
+        <div id="app" class="container-fluid">
             <app></app>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/vendor/plugins.js') }}"></script>
-        <script src="{{ asset('js/vendor/main.js') }}"></script>
+        <script src="{{ asset('js/base.js') }}"></script>
         @yield('js')
     </body>
 </html>

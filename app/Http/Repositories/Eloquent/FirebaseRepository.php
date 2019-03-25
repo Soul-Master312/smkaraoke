@@ -97,15 +97,9 @@ abstract class FirebaseRepository implements FirebaseRepositoryInterface
         return $this->database->getReference($this->node)->getValue();
     }
 
-    public function create(Array $data = [])
+    public function create($data)
     {
-        if (count($data) > 0) {
-            if ($this->node) {
-                $this->database->getReference($this->node)->update($data);
-            }
-            Throw new \Exception('Please input node to change');
-        }
-        Throw new \Exception('Please input data to change');
+        return $this->database->getReference($this->node)->set($data);
     }
 
     public function replace($data)
@@ -115,13 +109,14 @@ abstract class FirebaseRepository implements FirebaseRepositoryInterface
 
     public function update($data)
     {
-        if ($data) {
-            if ($this->node) {
-                $this->replace($data);
-            }
-            Throw new \Exception('Please input node to change');
+        $this->database->getReference($this->node)->update($data);
+    }
+
+    public function delete()
+    {
+        if ($this->node) {
+            return $this->database->getReference($this->node)->remove();
         }
-        Throw new \Exception('Please input data to change');
     }
 
 }

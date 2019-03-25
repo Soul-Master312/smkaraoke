@@ -11,18 +11,21 @@
 |
 */
 
-use Illuminate\Routing\Router;
-
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//Route::middleware('auth1:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
 
-/** @var Router $router */
+Route::group(['namespace' => 'Api'], function () {
+   Route::group(['prefix' => '/room'], function() {
+       Route::post('create','RoomApiController@create');
+       Route::post('join','RoomApiController@create');
+       Route::group(['middleware' => 'auth1:room'], function() {
 
-$router->group(['prefix' => '/room', 'namespace' => 'Api'], function (Router $router) {
-    $router->post('create','RoomApiController@create');
-    $router->post('join','RoomApiController@create');
-    $router->group(['middleware' => 'auth:room'], function() {
-
+       });
     });
+   Route::post('/search_by_name','SearchApiController@searchByName');
+   Route::post('/song/add','SongApiController@create');
+   Route::post('/song/delete','SongApiController@delete');
+   Route::post('/song/add-first','SongApiController@addFirst');
+   Route::post('/song/add-playing','SongApiController@addPlaying');
 });

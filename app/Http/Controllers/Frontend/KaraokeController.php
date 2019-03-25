@@ -19,19 +19,18 @@ class KaraokeController extends BaseController
 
     public function index()
     {
-        if (!empty(request()->all())){
-            $key = request()->all()['key'];
-            $client = new \GuzzleHttp\Client();
-            try {
-                $response = $client->request('GET', 'https://www.googleapis.com/youtube/v3/search?type=video&maxResults=20&part=snippet&q='. $key .'&key=AIzaSyDhyTQHtLM94x1iDNcB8KUh6KKh7gL54pI');
-            }catch (\Exception $e){
-                dd($e);
-            }
-            dd($response->getBody());
-            $data = (array) json_decode($response->getBody()->getContents());
-//        dd($data);
-            return response()->json($data);
-        }
+//        if (!empty(request()->all())){
+//            $key = request()->all()['key'];
+//            $client = new \GuzzleHttp\Client();
+//            try {
+//                $response = $client->request('GET', 'https://www.googleapis.com/youtube/v3/search?type=video&maxResults=20&part=snippet&q='. $key .'&key=AIzaSyDhyTQHtLM94x1iDNcB8KUh6KKh7gL54pI');
+//            }catch (\Exception $e){
+//                dd($e);
+//            }
+//            dd($response->getBody());
+//            $data = (array) json_decode($response->getBody()->getContents());
+//            return response()->json($data);
+//        }
         return view('home');
     }
 
