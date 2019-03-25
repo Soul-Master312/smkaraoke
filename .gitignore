@@ -10,7 +10,7 @@ app/storage/
 public/storage
 public/hot
 public/css/app.css
-public/js/app.css
+public/js/app.js
 storage/*.key
 .env.*.php
 .env.php
