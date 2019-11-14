@@ -11,17 +11,18 @@
   },
   "devDependencies": {
     "axios": "^0.16.2",
-    "bootstrap-sass": "^3.3.7",
-    "cross-env": "^5.0.1",
-    "jquery": "^3.1.1",
+    "bootstrap-sass": "^3.4.1",
+    "cross-env": "^5.2.1",
+    "jquery": "^3.4.1",
     "laravel-mix": "^1.0",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.15",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "element-ui": "^2.4.11",
+    "element-ui": "^2.12.0",
     "font-awesome": "^4.7.0",
-    "vue-i18n": "^8.7.0",
-    "vue-router": "^3.0.2",
-    "vue": "^2.5.21"
+    "vue": "^2.6.10",
+    "vue-i18n": "^8.15.0",
+    "vue-router": "^3.1.3"
   }
 }
