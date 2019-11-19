@@ -11,6 +11,7 @@ namespace App\Http\Repositories\Eloquent;
 
 use App\Http\Repositories\Contracts\SearchApiRepositoryInterface;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
 
 class SearchApiRepository implements SearchApiRepositoryInterface
 {
@@ -33,6 +34,7 @@ class SearchApiRepository implements SearchApiRepositoryInterface
             $response = $client->request('GET', 'https://www.googleapis.com/youtube/v3/search?type=video&maxResults=20&part=snippet&q='. $keyWord . ' karaoke' .'&key=' . $this->apiKey);
             return json_decode($response->getBody()->getContents());
         }catch (\Exception $e){
+            Log::error($e->getMessage());
             return $e->getMessage();
         }
     }
